@@ -1,10 +1,16 @@
 import {View, Text} from 'react-native';
 import React from 'react';
+import Item from './Item/Item';
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View
+      style={{
+        flexDirection: 'row',
+        flex: 1,
+        backgroundColor: '#fff'
+      }}>
+      <Item />
     </View>
   );
 };
