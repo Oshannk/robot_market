@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import {Input} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
+import Colors from '../constants/Colors';
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
   loginView: {width: '80%', paddingVertical: 10},
   loginButton: {
     height: 45,
-    backgroundColor: '#67db8a',
+    backgroundColor: Colors.primaryColor,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   titleText: {
-    color: '#67db8a',
+    color: Colors.primaryColor,
     fontSize: 48,
     fontWeight: '200',
     textAlign: 'center',

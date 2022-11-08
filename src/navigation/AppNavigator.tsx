@@ -5,12 +5,13 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import HomeScreen from '../screens/HomeScreen';
 import {StatusBar, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import Colors from '../constants/Colors';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={'#67db8a'} />
+      <StatusBar backgroundColor={Colors.primaryColor} />
 
       <Stack.Navigator>
         <Stack.Screen
@@ -27,7 +28,7 @@ const AppNavigator = () => {
             headerTintColor: '#fff',
             headerLeft: () => <></>,
             headerStyle: {
-              backgroundColor: '#67db8a',
+              backgroundColor: Colors.primaryColor,
             },
             headerRight: () => (
               <TouchableOpacity
