@@ -69,14 +69,14 @@ const WelcomeScreen = () => {
   return (
     <KeyboardAvoidingView
       keyboardVerticalOffset={0}
-      style={{flex: 1, alignItems: 'center', backgroundColor: 'white'}}
+      style={styles.avoidingView}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.containerScrollView}>
         <View style={styles.container}>
           <View style={styles.title}>
-            <Text style={styles.titleText}>ROBOT MARKET</Text>
+            <Text style={styles.titleText}>{`ROBOT\nMARKET`}</Text>
           </View>
           <View style={styles.imageView}>
             <Image
@@ -118,6 +118,7 @@ const WelcomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  avoidingView: {flex: 1, alignItems: 'center', backgroundColor: 'white'},
   loginView: {width: '80%', paddingVertical: 10},
   loginButton: {
     height: 45,
@@ -136,9 +137,14 @@ const styles = StyleSheet.create({
   imageView: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 40,
+    paddingVertical: 20,
   },
-  titleText: {color: '#67db8a', fontSize: 42, fontWeight: '900'},
+  titleText: {
+    color: '#67db8a',
+    fontSize: 48,
+    fontWeight: '200',
+    textAlign: 'center',
+  },
   title: {
     paddingVertical: 20,
     justifyContent: 'center',
