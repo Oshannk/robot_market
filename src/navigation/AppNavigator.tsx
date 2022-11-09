@@ -3,22 +3,43 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import HomeScreen from '../screens/HomeScreen';
-
+import {StatusBar, TouchableOpacity} from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
+import Colors from '../constants/Colors';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor={Colors.primaryColor} />
+
       <Stack.Navigator>
         <Stack.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}
           options={{headerShown: false}}
         />
+
         <Stack.Screen
+          options={({navigation}) => ({
+            title: 'Store',
+            headerTitleStyle: {color: '#403F3F', fontSize: 24},
+            headerShown: true,
+            headerTintColor: '#fff',
+            headerLeft: () => <></>,
+            headerStyle: {
+              backgroundColor: Colors.primaryColor,
+            },
+            headerRight: () => (
+              <TouchableOpacity
+                style={{marginRight: 20}}
+                onPress={() => navigation.navigate('Add Student')}>
+                <Feather name="shopping-cart" size={25} color="#403F3F" />
+              </TouchableOpacity>
+            ),
+          })}
           name="HomeScreen"
           component={HomeScreen}
-          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
