@@ -4,18 +4,21 @@ import {GET_ROBOTS} from '../../constants/apiConst';
 
 export interface RobotsGetAction {
   readonly type: 'GET_ROBOTS';
-  data: any;
+  payload: Robot[];
+}
+
+export interface Robot {
+  name: any;
+  image: any;
+  price: any;
+  stock: any;
+  createdAt: any;
+  material: any;
 }
 
 export function getRobotList() {
   return async (dispatch: Dispatch<any>) => {
     try {
-      //   const response = await fetch('http://10.0.2.2:8000/api/robots', {
-      //     method: 'GET',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //   });
       const config: AxiosRequestConfig = {
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +32,7 @@ export function getRobotList() {
       console.log(response.data);
       dispatch({
         type: GET_ROBOTS,
-        payload: response,
+        payload: response.data,
       });
       return response || [];
     } catch (error) {

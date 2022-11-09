@@ -9,7 +9,7 @@ const itemReducer = (state = initialState, action: RobotsGetAction) => {
     case GET_ROBOTS:
       return {
         ...state,
-        robotList: [],
+        robotList: action.payload,
       };
     default:
       return state;
