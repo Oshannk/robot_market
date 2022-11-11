@@ -1,6 +1,7 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import moment from 'moment';
 import {Dispatch} from 'react';
+import { Platform } from 'react-native';
 import {GET_ROBOTS} from '../../constants/apiConst';
 
 export type Actions = RobotsGetAction | RobotAddCartAction | RobotGetCartAction;
@@ -49,9 +50,9 @@ export function getRobotList() {
           'Content-Type': 'application/json',
         },
       };
-
+      const baseUrl = Platform.OS === 'ios' ? 'http://localhost:8000/': 'http://10.0.2.2:8000/';
       const response = await axios.get(
-        'http://10.0.2.2:8000/api/robots',
+        `${baseUrl}api/robots`,
         config,
       );
       let data: Robot[] = response.data.data;

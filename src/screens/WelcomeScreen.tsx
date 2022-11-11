@@ -147,7 +147,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   title: {
-    paddingVertical: 20,
+    paddingVertical: 60,
+    paddingBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -172,7 +173,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderWidth: 1,
     fontSize: 15,
-    fontFamily: 'Poppins-Regular',
   },
   inputContainerStyle: {overflow: 'hidden'},
   inputLabelStyle: {
