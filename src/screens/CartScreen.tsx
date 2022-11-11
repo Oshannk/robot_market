@@ -25,9 +25,9 @@ const CartScreen = () => {
     const [stock, setStock] = useState(item.item.stock);
     const [quantity, setQuantity] = useState(item.item.qty);
 
-    const getTotal = item => {
+    const getTotal = (itm: {item: any}) => {
       return (
-        Math.round(Number(item.item.price) * quantity * 100) / 100
+        Math.round(Number(itm.item.price) * quantity * 100) / 100
       ).toFixed(2);
     };
 
@@ -118,8 +118,7 @@ const CartScreen = () => {
 
       setNoItems(totalItems);
       setSubTotal(total);
-      console.log('test ',totalItems);
-      
+      console.log('test ', totalItems);
     }, [quantity]);
 
     return (

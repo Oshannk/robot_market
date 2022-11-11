@@ -1,5 +1,5 @@
 import {View, Text, Image, StyleSheet, Modal} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Robot} from '../../redux/actions/item';
 import {Button} from 'react-native-elements';
 import Colors from '../../constants/Colors';
@@ -16,7 +16,7 @@ const ItemDetail = (props: {item: Robot; onClose: () => void}) => {
   const [errorMsg, setErrorMsg] = useState(false);
 
   const robotList = useSelector((state: ApplicationState) => {
-    return state.robots.robotList as Robot[];
+    return state.robots.robotList;
   });
 
   const cart = useSelector((state: ApplicationState) => {
@@ -46,8 +46,8 @@ const ItemDetail = (props: {item: Robot; onClose: () => void}) => {
     }
   };
 
-  const getTotal = item => {
-    return (Math.round(Number(item.price) * quantity * 100) / 100).toFixed(2);
+  const getTotal = (itm: Robot) => {
+    return (Math.round(Number(itm.price) * quantity * 100) / 100).toFixed(2);
   };
 
   const AddToCart = () => {
@@ -172,14 +172,8 @@ const ItemDetail = (props: {item: Robot; onClose: () => void}) => {
             // Alert.alert("Modal has been closed.");
             // setModalVisible(!modalVisible);
           }}>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#B3351D',
-              height: 30,
-            }}>
-            <Text style={{color: '#fff'}}>
+          <View style={styles.alertStyle}>
+            <Text style={styles.alert}>
               Sorry! you reached maximum limit! (Max: 5)
             </Text>
           </View>
@@ -192,6 +186,13 @@ const ItemDetail = (props: {item: Robot; onClose: () => void}) => {
 export default ItemDetail;
 
 const styles = StyleSheet.create({
+  alert: {color: '#fff'},
+  alertStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#B3351D',
+    height: 30,
+  },
   addToCartText: {color: Colors.secondaryColor, fontSize: 16, paddingLeft: 10},
   addToCartView: {
     width: '60%',

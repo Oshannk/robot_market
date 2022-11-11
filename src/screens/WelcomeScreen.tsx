@@ -104,9 +104,9 @@ const WelcomeScreen = () => {
               onPress={async () => {
                 const _email = validateEmail();
                 const _name = validateName();
-                // if (_email && _name) {
-                navigation.navigate('HomeScreen' as never);
-                // }
+                if (_email && _name) {
+                  navigation.navigate('HomeScreen' as never);
+                }
               }}
               style={styles.loginButton}>
               <Text style={styles.loginText}>Continue</Text>

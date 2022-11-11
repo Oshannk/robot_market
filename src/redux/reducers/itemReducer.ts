@@ -1,9 +1,9 @@
 import {ADD_TO_CART, GET_CART, GET_ROBOTS} from '../../constants/apiConst';
-import {Actions} from '../actions/item';
+import {Actions, Cart, Robot} from '../actions/item';
 
 const initialState = {
-  robotList: [],
-  cart: [],
+  robotList: [] as Robot[],
+  cart: [] as Cart[],
 };
 const itemReducer = (state = initialState, action: Actions) => {
   switch (action.type) {

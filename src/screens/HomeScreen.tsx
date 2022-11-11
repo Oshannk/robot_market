@@ -22,7 +22,7 @@ const HomeScreen = () => {
   });
   useEffect(() => {
     dispatch(getRobotList());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const fList = robotList.filter(e => e.material === selectedMaterial);
@@ -104,7 +104,9 @@ const HomeScreen = () => {
             onPress={() => {
               setSelectedMaterial(l);
               setSheetVisible(false);
-            }}>
+            }}
+            tvParallaxProperties={undefined}
+            hasTVPreferredFocus={undefined}>
             <ListItem.Content
               style={{justifyContent: 'center', alignItems: 'center'}}>
               <ListItem.Title>{l}</ListItem.Title>
