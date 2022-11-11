@@ -1,5 +1,5 @@
 import {View, Text, Image, StyleSheet, Modal} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Robot} from '../../redux/actions/item';
 import {Button} from 'react-native-elements';
 import Colors from '../../constants/Colors';
@@ -40,20 +40,27 @@ const ItemDetail = (props: {item: Robot; onClose: () => void}) => {
   };
 
   const MinQty = () => {
-    if (stock < item.stock) {
+    if (quantity > 0 && stock < item.stock) {
       setStock(stock + 1);
       setQuantity(quantity - 1);
     }
   };
 
+  const getTotal = item => {
+    return (Math.round(Number(item.price) * quantity * 100) / 100).toFixed(2);
+  };
+
   const AddToCart = () => {
-    
     const cartIndex = cart.findIndex((x: any) => x.id === item.id);
     console.log('cartIndex', cartIndex);
 
     if (cartIndex > -1) {
-      cart[cartIndex] = {...item, qty: cart[cartIndex]?.qty + quantity};
-      // console.log('cart',cart);
+      cart[cartIndex] = {
+        ...item,
+        qty: cart[cartIndex]?.qty + quantity,
+        stock: stock,
+        total: getTotal(item),
+      };
 
       dispatch({
         type: GET_CART,
@@ -67,24 +74,25 @@ const ItemDetail = (props: {item: Robot; onClose: () => void}) => {
         }, 2000);
         return;
       }
-      console.log('test return');
-
-      console.log('quantity', quantity);
-      console.log('stock', stock);
 
       dispatch({
         type: ADD_TO_CART,
-        payload: {...item, qty: quantity, stock: stock},
+        payload: {...item, qty: quantity, stock: stock, total: getTotal(item)},
       });
     }
 
-    const robotIndex = robotList.findIndex(x => x.id === item.id);
-    robotList[robotIndex] = {...item, stock: stock};
+    const robotItem = robotList.map(x => {
+      if (x.id === item.id) {
+        return {...item, stock: stock};
+      } else {
+        return x;
+      }
+    });
+    // robotList[robotIndex] = {...item, stock: stock};
     dispatch({
       type: GET_ROBOTS,
-      payload: robotList,
+      payload: robotItem,
     });
-    // console.log('cart', cart);
     onClose();
   };
 

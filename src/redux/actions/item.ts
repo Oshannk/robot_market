@@ -29,6 +29,7 @@ export interface Cart {
   createdAt: any;
   material: any;
   qty: any;
+  total: any;
 }
 export interface Robot {
   id: any;

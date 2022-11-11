@@ -38,10 +38,7 @@ const HomeScreen = () => {
     }
     let uniqueMaterials: any[] = materials.filter(onlyUnique);
     setMaterialList(uniqueMaterials);
-    console.log('unique', uniqueMaterials);
   }, [robotList]);
-
-  // console.log('redux: ', robotList.data[1].name);
 
   const renderItem = (item: {item: Robot; index: any}) => {
     const robot = item.item;
