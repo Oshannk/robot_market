@@ -65,8 +65,6 @@ export function getRobotList() {
         return {...item, id: index, createdAt: date};
       });
 
-      console.log('data', data);
-
       dispatch({
         type: GET_ROBOTS,
         payload: data,

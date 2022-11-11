@@ -105,7 +105,6 @@ const CartScreen = () => {
         type: GET_CART,
         payload: leftItems,
       });
-      console.log(cart);
     };
 
     useEffect(() => {
@@ -118,7 +117,6 @@ const CartScreen = () => {
 
       setNoItems(totalItems);
       setSubTotal(total);
-      console.log('test ', totalItems);
     }, [quantity]);
 
     return (
