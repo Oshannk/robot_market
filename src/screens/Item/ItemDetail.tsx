@@ -52,7 +52,6 @@ const ItemDetail = (props: {item: Robot; onClose: () => void}) => {
 
   const AddToCart = () => {
     const cartIndex = cart.findIndex((x: any) => x.id === item.id);
-    console.log('cartIndex', cartIndex);
 
     if (cartIndex > -1) {
       cart[cartIndex] = {
